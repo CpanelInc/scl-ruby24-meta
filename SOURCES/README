@@ -1,0 +1,37 @@
+Package %{scl_name} provides the Ruby language as a Software
+Collection.  For more information about Software Collections, see
+scl(1).  By installing the %{scl_name} collection, you will get a
+minimal set of packages to have a working Ruby installation.
+
+Usage: scl enable %{scl} 'ruby'
+
+Software Collections allows use of applications which are not located
+in the filesystem root hierarchy but are present in an alternative
+location, which is %{_scl_root} in case of the %{scl_name}
+collection.
+
+Ruby is the interpreted scripting language for quick and easy
+object-oriented programming.  It has many features to process text
+files and to do system management tasks (as in Perl).  It is simple,
+straight-forward, and extensible.
+
+When working with %{scl_name} collection, use the "scl" utility (see
+scl(1) for usage) to enable the scl environment properly.
+
+Configuration for the %{scl_name} software collection is located under %{_sysconfdir}.
+
+Examples:
+scl enable %{scl_name} 'command --arg'
+  Run a specific command with argument --arg within %{scl_name} software collections
+  environment.
+
+scl enable %{scl_name} 'ruby'
+  Run ruby from %{scl_name} software collection.
+
+scl enable %{scl_name} bash
+  Run interactive shell where %{scl_name} software collection is enabled.
+
+scl enable %{scl_name} 'man ruby'
+  Show man pages for ruby command, which is part of the %{scl_name} software
+  collection.
+

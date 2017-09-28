@@ -22,7 +22,7 @@
 
 Summary: Package that installs %scl
 Name:    %scl_name
-Version: 2.4.1
+Version: 2.4.2
 Release: %{release_prefix}%{?dist}.cpanel
 Vendor:  cPanel, Inc.
 License: GPLv2+
@@ -127,5 +127,8 @@ mkdir -p %{buildroot}%{_libdir}/pkgconfig
 %{_root_sysconfdir}/rpm/macros.%{scl_name_base}-scldevel
 
 %changelog
+* Thu Sep 28 2017 Rishwanth Yeddula <rish@cpanel.net> 2.4.2-1
+- EA-6847: Update ruby to 2.4.2
+
 * Mon Apr 3 2017 Rishwanth Yeddula <rish@cpanel.net> 2.4.1-1
 - initial packaging

@@ -16,7 +16,7 @@
 %global nfsmountable 1
 
 # Doing release_prefix this way for Release allows for OBS-proof versioning, See EA-4586 for more details
-%define release_prefix 1
+%define release_prefix 2
 
 %{!?install_scl: %global install_scl 1}
 
@@ -66,7 +66,7 @@ packages depending on %scl Software Collection.
 
 cat <<EOF | tee enable
 export PATH=%{_bindir}:%{_sbindir}\${PATH:+:\${PATH}}
-export LD_LIBRARY_PATH=%{_libdir}\${LD_LIBRARY_PATH:+:\${LD_LIBRARY_PATH}}
+export LD_LIBRARY_PATH=%{_libdir}:/opt/cpanel/ea-openssl/%{_lib}\${LD_LIBRARY_PATH:+:\${LD_LIBRARY_PATH}}
 export MANPATH=%{_mandir}:\$MANPATH
 export PKG_CONFIG_PATH=%{_libdir}/pkgconfig\${PKG_CONFIG_PATH:+:\${PKG_CONFIG_PATH}}
 # For SystemTap.
@@ -127,6 +127,10 @@ mkdir -p %{buildroot}%{_libdir}/pkgconfig
 %{_root_sysconfdir}/rpm/macros.%{scl_name_base}-scldevel
 
 %changelog
+* Wed Mar 28 2018 Rishwanth Yeddula <rish@cpanel.net> 2.4.3-2
+- EA-7341: Add ea-openssl to the LD_LIBRARY_PATH to ensure ruby
+  can find the openssl libs.
+
 * Tue Feb 06 2018 Jacob Perkins <jacob.perkins@cpanel.net> 2.4.3-1
 - EA-7221: Update ruby to 2.4.3
 

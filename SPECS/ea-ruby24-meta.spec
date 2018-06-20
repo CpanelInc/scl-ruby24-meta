@@ -16,13 +16,13 @@
 %global nfsmountable 1
 
 # Doing release_prefix this way for Release allows for OBS-proof versioning, See EA-4586 for more details
-%define release_prefix 2
+%define release_prefix 1
 
 %{!?install_scl: %global install_scl 1}
 
 Summary: Package that installs %scl
 Name:    %scl_name
-Version: 2.4.3
+Version: 2.4.4
 Release: %{release_prefix}%{?dist}.cpanel
 Vendor:  cPanel, Inc.
 License: GPLv2+
@@ -127,6 +127,9 @@ mkdir -p %{buildroot}%{_libdir}/pkgconfig
 %{_root_sysconfdir}/rpm/macros.%{scl_name_base}-scldevel
 
 %changelog
+* Tue Jun 12 Rishwanth Yeddula <rish@cpanel.net> 2.4.4-1
+- EA-7221: Update ruby to 2.4.4
+
 * Wed Mar 28 2018 Rishwanth Yeddula <rish@cpanel.net> 2.4.3-2
 - EA-7341: Add ea-openssl to the LD_LIBRARY_PATH to ensure ruby
   can find the openssl libs.

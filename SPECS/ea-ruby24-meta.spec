@@ -127,7 +127,7 @@ mkdir -p %{buildroot}%{_libdir}/pkgconfig
 %{_root_sysconfdir}/rpm/macros.%{scl_name_base}-scldevel
 
 %changelog
-* Tue Jun 12 Rishwanth Yeddula <rish@cpanel.net> 2.4.4-1
+* Tue Jun 12 2018 Rishwanth Yeddula <rish@cpanel.net> 2.4.4-1
 - EA-7221: Update ruby to 2.4.4
 
 * Wed Mar 28 2018 Rishwanth Yeddula <rish@cpanel.net> 2.4.3-2

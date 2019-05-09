@@ -16,7 +16,7 @@
 %global nfsmountable 1
 
 # Doing release_prefix this way for Release allows for OBS-proof versioning, See EA-4586 for more details
-%define release_prefix 1
+%define release_prefix 2
 
 %{!?install_scl: %global install_scl 1}
 
@@ -44,6 +44,15 @@ Requires: scl-utils
 
 %description runtime
 Package shipping essential scripts to work with %scl Software Collection.
+
+%post
+scl enable %{scl} 'gem install bundler' || :
+
+%preun
+
+if [ $1 = 0 ]; then
+    scl enable %{scl} 'gem uninstall bundler'  || :
+fi
 
 %package build
 Summary: Package shipping basic build configuration
@@ -97,6 +106,9 @@ help2man -N --section 7 ./h2m_help -o %{scl_name}.7
 
 install -D -m 644 enable %{buildroot}%{_scl_scripts}/enable
 
+# Some gems install scripts/bnaries into /opt/cpanel/ea-ruby24/root/usr/local/bin
+sed -i 's|PATH=|PATH=%{_bindir}/../local/bin:|' %{buildroot}%{_scl_scripts}/enable
+
 cat >> %{buildroot}%{_root_sysconfdir}/rpm/macros.%{scl_name_base}-scldevel << EOF
 %%scl_%{scl_name_base} %{scl}
 %%scl_prefix_%{scl_name_base} %{scl_prefix}
@@ -127,6 +139,9 @@ mkdir -p %{buildroot}%{_libdir}/pkgconfig
 %{_root_sysconfdir}/rpm/macros.%{scl_name_base}-scldevel
 
 %changelog
+* Wed May 08 2019 Daniel Muey <dan@cpanel.net> - 2.4.4-2
+- ZC-5085: Get `bundle` gem (and gems in general) working under `scl`
+
 * Tue Jun 12 2018 Rishwanth Yeddula <rish@cpanel.net> 2.4.4-1
 - EA-7221: Update ruby to 2.4.4
 

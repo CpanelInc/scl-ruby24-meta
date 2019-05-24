@@ -16,13 +16,13 @@
 %global nfsmountable 1
 
 # Doing release_prefix this way for Release allows for OBS-proof versioning, See EA-4586 for more details
-%define release_prefix 2
+%define release_prefix 1
 
 %{!?install_scl: %global install_scl 1}
 
 Summary: Package that installs %scl
 Name:    %scl_name
-Version: 2.4.4
+Version: 2.4.6
 Release: %{release_prefix}%{?dist}.cpanel
 Vendor:  cPanel, Inc.
 License: GPLv2+
@@ -139,6 +139,9 @@ mkdir -p %{buildroot}%{_libdir}/pkgconfig
 %{_root_sysconfdir}/rpm/macros.%{scl_name_base}-scldevel
 
 %changelog
+* Tue May 21 2019 Cory McIntire <cory@cpanel.net> - 2.4.6-1
+- EA-8466: Update Ruby to 2.4.6
+
 * Wed May 08 2019 Daniel Muey <dan@cpanel.net> - 2.4.4-2
 - ZC-5085: Get `bundle` gem (and gems in general) working under `scl`
 

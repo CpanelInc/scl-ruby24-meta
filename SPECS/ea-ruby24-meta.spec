@@ -22,7 +22,7 @@
 
 Summary: Package that installs %scl
 Name:    %scl_name
-Version: 2.4.9
+Version: 2.4.10
 Release: %{release_prefix}%{?dist}.cpanel
 Vendor:  cPanel, Inc.
 License: GPLv2+
@@ -139,6 +139,9 @@ mkdir -p %{buildroot}%{_libdir}/pkgconfig
 %{_root_sysconfdir}/rpm/macros.%{scl_name_base}-scldevel
 
 %changelog
+* Mon Apr 13 2020 Cory McIntire <cory@cpanel.net> - 2.4.10-1
+* EA-8992: Update Ruby to 2.4.10
+
 * Wed Oct 02 2019 Tim Mullin <tim@cpanel.net> - 2.4.9-1
 - EA-8682: Update Ruby to 2.4.9
 

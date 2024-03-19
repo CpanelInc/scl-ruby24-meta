@@ -43,7 +43,7 @@ Requires: scl-utils
 Package shipping essential scripts to work with %scl Software Collection.
 
 %post
-scl enable %{scl} 'gem install bundler' || :
+scl enable %{scl} 'gem install bundler --no-document -v 2.4.22' || :
 
 %preun
 

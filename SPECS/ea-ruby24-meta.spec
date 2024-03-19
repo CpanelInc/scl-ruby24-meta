@@ -13,7 +13,7 @@
 %global nfsmountable 1
 
 # Doing release_prefix this way for Release allows for OBS-proof versioning, See EA-4586 for more details
-%define release_prefix 3
+%define release_prefix 4
 
 %{!?install_scl: %global install_scl 1}
 
@@ -43,7 +43,7 @@ Requires: scl-utils
 Package shipping essential scripts to work with %scl Software Collection.
 
 %post
-scl enable %{scl} 'gem install bundler' || :
+scl enable %{scl} 'gem install bundler --no-document -v 2.3.27' || :
 
 %preun
 
@@ -136,6 +136,9 @@ mkdir -p %{buildroot}%{_libdir}/pkgconfig
 %{_root_sysconfdir}/rpm/macros.%{scl_name_base}-scldevel
 
 %changelog
+* Tue Mar 19 2024 Cory McIntire <cory@cpanel.net> - 2.4.10-4
+- EA-12025: Update bundler version requirement to allow to install for scl-ruby24-passenger
+
 * Wed May 10 2023 Brian Mendoza <brian.mendoza@cpanel.net> - 2.4.10-3
 - ZC-10936: Clean up Makefile and remove debug-package-nil
 
